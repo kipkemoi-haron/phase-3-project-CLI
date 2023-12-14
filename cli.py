@@ -81,7 +81,7 @@ def display_sales_chart():
     plt.xlabel("X-axis")
     plt.ylabel("Y-axis")
     plt.title("Sample Sales Chart")
-
+    
     # Save figure as an image file
     plt.savefig("sales_chart.png")
     plt.close()  # Close the figure to release resources
