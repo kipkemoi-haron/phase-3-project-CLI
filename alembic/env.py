@@ -41,7 +41,7 @@ def run_migrations_offline() -> None:
     """
     url = config.get_main_option(
         "sqlalchemy.url",
-        "mysql+mysqlconnector://root:qwerty1234@localhost/my_database"
+        "mysql+mysqlconnector://root:qwerty123@localhost/new_inventory"
     )
 
     context.configure(

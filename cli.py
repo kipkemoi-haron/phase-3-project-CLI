@@ -9,7 +9,7 @@ from model import Base, Customer, Product, Sale, Inventory, InventoryAlert, User
 Base = declarative_base()
 
 # Set up the database connection
-DATABASE_URL = "mysql+mysqlconnector://root:qwerty1234@localhost/my_database"
+DATABASE_URL = "mysql+mysqlconnector://root:qwerty123@localhost/new_inventory"
 engine = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -81,7 +81,7 @@ def display_sales_chart():
     plt.xlabel("X-axis")
     plt.ylabel("Y-axis")
     plt.title("Sample Sales Chart")
-    
+
     # Save figure as an image file
     plt.savefig("sales_chart.png")
     plt.close()  # Close the figure to release resources
