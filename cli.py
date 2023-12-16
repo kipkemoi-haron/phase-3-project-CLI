@@ -25,9 +25,9 @@ def generate_table_cli(table, table_name, fields):
             item_data = {}
             for field in fields:
                 item_data[field] = click.prompt(f"{field.capitalize()}", type=str)
-            new_item = table(**item_data)
-            session.add(new_item)
-            session.commit()
+            new_item = table(**item_data)#new item is initialized to the table instance 
+            session.add(new_item)#adds the new item to the database session
+            session.commit()#saves the new item to the table
             click.echo(f"Added {table_name}: {new_item}")
         except Exception as e:
             session.rollback()
@@ -74,26 +74,26 @@ def generate_table_cli(table, table_name, fields):
     return add_item, delete_item, update_item, list_items
 
 
-@click.command(name="display-sales-chart")
-def display_sales_chart():
-    # chart generation
-    plt.plot([1, 2, 3, 4, 5], [10, 20, 25, 30, 35])
-    plt.xlabel("X-axis")
-    plt.ylabel("Y-axis")
-    plt.title("Sample Sales Chart")
+# @click.command(name="display-sales-chart")
+# def display_sales_chart():
+#     # chart generation
+#     plt.plot([1, 2, 3, 4, 5], [10, 20, 25, 30, 35])
+#     plt.xlabel("X-axis")
+#     plt.ylabel("Y-axis")
+#     plt.title("Sample Sales Chart")
+    
+#     # Save figure as an image file
+#     plt.savefig("sales_chart.png")
+#     plt.close()  # Close the figure to release resources
 
-    # Save figure as an image file
-    plt.savefig("sales_chart.png")
-    plt.close()  # Close the figure to release resources
+#     click.echo("Sales chart saved as 'sales_chart.png'.")
 
-    click.echo("Sales chart saved as 'sales_chart.png'.")
-
-    # Display the chart in the CLI
-    plt.show()
+#     # Display the chart in the CLI
+#     plt.show()
 
     
 
-cli.add_command(display_sales_chart)
+# cli.add_command(display_sales_chart)
 
 customer_cli = generate_table_cli(Customer, "Customer", ["customer_name", "email", "phone_number"])
 product_cli = generate_table_cli(Product, "Product", ["product_name", "description", "price"])
@@ -103,20 +103,12 @@ inventory_alert_cli = generate_table_cli(InventoryAlert, "InventoryAlert", ["pro
 user_cli = generate_table_cli(User, "User", ["username", "password_hash", "role"])
 order_detail_cli = generate_table_cli(OrderDetail, "OrderDetail", ["order_id", "product_id", "quantity", "subtotal"])
 
-if __name__ == "__main__":
-    for command in customer_cli:
-        cli.add_command(command)
-    for command in product_cli:
-        cli.add_command(command)
-    for command in sale_cli:
-        cli.add_command(command)
-    for command in inventory_cli:
-        cli.add_command(command)
-    for command in inventory_alert_cli:
-        cli.add_command(command)
-    for command in user_cli:
-        cli.add_command(command)
-    for command in order_detail_cli:
-        cli.add_command(command)
 
+if __name__ == "__main__":
+    all_commands = [customer_cli, product_cli, sale_cli, inventory_cli, inventory_alert_cli, user_cli, order_detail_cli]
+    
+    for command_set in all_commands:
+        for command in command_set:
+            cli.add_command(command)
+    
     cli()
