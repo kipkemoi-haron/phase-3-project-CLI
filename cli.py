@@ -1,5 +1,5 @@
 import click
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -112,3 +112,12 @@ if __name__ == "__main__":
             cli.add_command(command)
     
     cli()
+
+
+
+
+
+
+
+
+
