@@ -9,7 +9,7 @@ from model import Base, Customer, Product, Sale, Inventory, InventoryAlert, User
 Base = declarative_base()
 
 # Set up the database connection
-DATABASE_URL = "mysql+mysqlconnector://root:qwerty123@localhost/new_inventory"
+DATABASE_URL = "mysql+mysqlconnector://root:ds1425@localhost/inventory"
 engine = create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine)
 session = Session()

@@ -4,7 +4,7 @@ from model import Base, Customer, Product, Sale, Inventory, InventoryAlert, User
 from datetime import date
 
 # database connection URL
-DATABASE_URL = 'mysql://root:qwerty123@localhost:3306/new_inventory'
+DATABASE_URL = 'mysql://root:ds1425@localhost:3306/inventory'
 
 # Create the database engine
 engine = create_engine(DATABASE_URL)
