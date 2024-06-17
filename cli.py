@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import click
 # import matplotlib.pyplot as plt
 from sqlalchemy import create_engine
